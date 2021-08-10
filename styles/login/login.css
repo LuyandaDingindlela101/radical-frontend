@@ -1,14 +1,3 @@
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    color: #222;
-    font-family: 'Catamaran', sans-serif;
-}
-
 body {
     width: 100%;
     display: grid;
@@ -17,7 +6,7 @@ body {
     place-content: center;
 }
 
-/* FORM CONTAINER */
+
 .form-container {
     width: 550px;
     padding: 40px;
@@ -42,15 +31,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* FORM CONTAINER - LOGIN FORM */
-.form-container .login-form,
-.form-container .register-form {
+.form-container .login-form {
     text-align: start;
     margin-bottom: 20px;
 }
 
-.form-container .login-form label,
-.form-container .register-form label {
+.form-container .login-form label {
     display: block;
     font-size: 13px;
     font-weight: 500;
@@ -58,8 +44,7 @@ body {
     text-transform: capitalize;
 }
 
-.form-container .login-form input,
-.form-container .register-form input {
+.form-container .login-form input {
     width: 100%;
     padding: 10px;
     display: block;
@@ -69,22 +54,8 @@ body {
     transition: all .5s ease-in-out;
 }
 
-.form-container .login-form input:focus,
-.form-container .register-form input:focus {
+.form-container .login-form input:focus {
     outline: 1px solid #00a9e0;
-}
-
-.form-container .login-form button,
-.form-container .register-form button {
-    width: 100%;
-    border: none;
-    padding: 15px;
-    color: #ffffff;
-    font-weight: 900;
-    border-radius: 3px;
-    letter-spacing: 2px;
-    background: #00a9e0;
-    text-transform: uppercase;
 }
 
 .form-container span a {
