@@ -1,0 +1,95 @@
+body {
+    background: #fafafa;
+}
+
+.sidebar-container {
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100vh;
+    padding: 30px;
+    position: fixed;
+    background: #ffffff;
+}
+
+.sidebar-container h1 {
+    margin-bottom: 50px; 
+}
+
+.sidebar-container .menu-container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-container .menu-container .menu-items {
+    width: 100%;
+}
+
+
+.sidebar-container .menu-container .menu-items .menu-item {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    padding-bottom: 20px;
+    transition: all .5s ease-in-out;
+    border-bottom: 1px solid hsl(240, 5%, 91%);
+}
+
+.sidebar-container .menu-container .menu-item:hover .item-header h2 {
+    color: #00a9e0;     
+}
+
+.sidebar-container .menu-container .menu-item.active {
+    height: auto;
+}
+
+.sidebar-container .menu-container .menu-item.active .item-body {
+    visibility: visible;
+}
+
+.sidebar-container .menu-container .menu-item.active .item-header i {
+    transform: rotate(180deg);
+}
+
+.sidebar-container .menu-container .menu-item .item-header {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border: 1px solid #eeeeee;
+    justify-content: space-between;
+}
+
+.sidebar-container .menu-container .menu-item .item-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: hsl(237, 12%, 33%);
+    transition: all .5s ease-in-out;
+}
+
+.sidebar-container .menu-container .menu-item .item-header i {
+    transition: all .5s ease-in-out;
+}
+
+.sidebar-container .menu-container .menu-item .item-body {
+    visibility: hidden;
+}
+
+.sidebar-container .menu-container .menu-item .item-body ul {
+    list-style: none;
+}
+
+.sidebar-container .menu-container .menu-item .item-body ul li {
+    padding: 20px;
+}
+
+.sidebar-container .menu-container .menu-item .item-body ul li:hover {
+    background: #fafafa;
+}
+
