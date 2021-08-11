@@ -36,9 +36,8 @@ body {
     height: 50px;
     cursor: pointer;
     overflow: hidden;
-    padding-bottom: 20px;
     transition: all .5s ease-in-out;
-    border-bottom: 1px solid hsl(240, 5%, 91%);
+    border-bottom: 1px solid #e7e7e9;
 }
 
 .sidebar-container .menu-container .menu-item:hover .item-header h2 {

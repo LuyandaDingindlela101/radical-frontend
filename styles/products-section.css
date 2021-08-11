@@ -23,7 +23,6 @@
     padding: 15px;
     cursor: pointer;
     color: #080808;
-    border-radius: 5px;
     margin-right: 20px;
     letter-spacing: 2px;
     background: transparent;
@@ -55,14 +54,28 @@
     margin-bottom: 10px;
 }
 
-.products-section .products-container .product .product-body button {
+.products-section .products-container .product:nth-child(odd) .product-body button {
     padding: 15px;
     cursor: pointer;
     color: #080808;
-    border-radius: 5px;
     margin-right: 20px;
     letter-spacing: 2px;
     background: transparent;
     text-transform: uppercase;
     border: 1px solid #080808;
+}
+
+/* WHICH IS BETTER */
+.products-section .products-container .product:nth-child(even) .product-body button {
+    height: 50px;
+    border: none;
+    padding: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 0;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: #080808;
+    text-transform: uppercase;
 }
