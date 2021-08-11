@@ -17,6 +17,19 @@ body {
     justify-content: center;
 }
 
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 400px;
+    background: #f3f3f3;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
 /* FORM CONTAINER */
 .form-container {
     width: 95%;
