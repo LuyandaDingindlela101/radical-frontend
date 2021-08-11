@@ -10,6 +10,7 @@ body {
     padding: 30px;
     position: fixed;
     background: #ffffff;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.01);
 }
 
 .sidebar-container h1 {
@@ -29,7 +30,6 @@ body {
 .sidebar-container .menu-container .menu-items {
     width: 100%;
 }
-
 
 .sidebar-container .menu-container .menu-items .menu-item {
     width: 100%;

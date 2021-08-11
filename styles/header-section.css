@@ -3,7 +3,11 @@
     width: 100%;
     height: 50vh;
     display: flex;
+    padding: 50px;
+    padding: 20px;
     overflow: hidden;
+    margin-top: 50px;
+    max-width: 1200px;
     align-items: center;
     background: #f3f3f3;
     justify-content: space-around;
