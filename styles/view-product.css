@@ -1,5 +1,9 @@
 .view-product-section {
+    width: 90%;
+    padding: 20px;
+    max-width: 1200px;
 
+    display: none;
 }
 
 .view-product-section .product-container {
@@ -19,7 +23,6 @@
 
 .view-product-section .product-container .product-description {
     width: 50%;
-    padding-right: 50px;
 }
 
 .view-product-section .product-container .product-description h2 {

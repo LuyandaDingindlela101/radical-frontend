@@ -1,43 +1,44 @@
-.add-product-secton {
+.edit-product-secton {
     width: 90%;
     padding: 20px;
     max-width: 1200px;
-    
+
     display: none;
 }
 
-.add-product-secton .form-container {
+.edit-product-secton .form-container {
     text-align: start;
 }
 
-.add-product-secton .form-container h2 {
+.edit-product-secton .form-container h2 {
     margin-bottom: 30px;
     text-transform: uppercase;
 }
 
-.add-product-secton .form-container .product-form .row {
+.edit-product-secton .form-container .product-form .row {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     justify-content: space-between;
 }
 
-.add-product-secton .form-container .product-form .row .column {
+.edit-product-secton .form-container .product-form .row .column {
     width: 48%;
 }
 
-.add-product-secton .form-container .product-form label {
+.edit-product-secton .form-container .product-form label {
     text-transform: capitalize;
 }
 
-.add-product-secton .form-container .product-form input,
-.add-product-secton .form-container .product-form textarea {
+.edit-product-secton .form-container .product-form input,
+.edit-product-secton .form-container .product-form select,
+.edit-product-secton .form-container .product-form textarea {
     width: 100%;
     padding: 10px;
     display: block;
 }
 
-.add-product-secton .form-container .product-form button {
+.edit-product-secton .form-container .product-form button {
     width: 100%;
     height: 50px;
     border: none;
