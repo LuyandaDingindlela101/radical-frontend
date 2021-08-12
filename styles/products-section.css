@@ -1,7 +1,12 @@
 .products-section {
     width: 90%;
     padding: 20px;
+    display: none;
     max-width: 1200px;
+}
+
+.products-section.active {
+    display: block;
 }
 
 /* PRODUCTS HEADER */
@@ -86,4 +91,8 @@
     background: transparent;
     text-transform: uppercase;
     border: 1px solid #080808;
+}
+
+body button {
+    outline: none;
 }

@@ -1,10 +1,13 @@
-.profile-section {
+.view-profile {
     width: 90%;
     padding: 20px;
+    display: none;
     margin: 100px 0;
     max-width: 1200px;
+}
 
-    display: none;
+.view-profile.active {
+    display: block;
 }
 
 .view-profile .profile-container {

@@ -1,9 +1,12 @@
 .add-product-secton {
     width: 90%;
     padding: 20px;
-    max-width: 1200px;
-    
     display: none;
+    max-width: 1200px;
+}
+
+.add-product-secton.active {
+    display: block;
 }
 
 .add-product-secton .form-container {

@@ -1,9 +1,12 @@
 .edit-profile-secton {
     width: 90%;
+    display: none;
     padding: 20px;
     max-width: 1200px;
+}
 
-    display: none;
+.edit-profile-secton.active {
+    display: block;
 }
 
 .edit-profile-secton .form-container {

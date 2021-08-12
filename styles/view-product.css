@@ -1,9 +1,12 @@
 .view-product-section {
     width: 90%;
+    display: none;
     padding: 20px;
     max-width: 1200px;
+}
 
-    display: none;
+.view-product-section.active {
+    display: block;
 }
 
 .view-product-section .product-container {

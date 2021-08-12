@@ -2,9 +2,13 @@
     width: 90%;
     padding: 20px;
     max-width: 1200px;
-
     display: none;
 }
+
+.edit-product-secton.active {
+    display: block;
+}    
+
 
 .edit-product-secton .form-container {
     text-align: start;
