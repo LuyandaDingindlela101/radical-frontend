@@ -1,16 +1,13 @@
 // VARIABLE DACLARATIONS
+let sections = document.querySelectorAll("section");
+
+let edit_profile = document.querySelector(".edit-profile");
+let view_profile = document.querySelector(".view-profile-btn");
+
 let faqList = document.querySelectorAll(".menu-item");
 let view_all_products = document.querySelector(".view-all-product");
 let open_add_product_btn = document.querySelector(".open-add-product");
 let edit_add_product_btn = document.querySelector(".edit-add-product");
-
-
-let view_profile = document.querySelector(".view-profile-btn");
-let edit_profile = document.querySelector(".edit-profile");
-
-
-console.log(edit_profile);
-let sections = document.querySelectorAll("section");
 
 
 
@@ -63,4 +60,3 @@ function addMenuItem(e) {
      // ONCE ALL THE OTHER active CLASSES HAVE BEEN REMOVED, ADD IT TO THE CURRENT faq
      this.classList.add("active");
 }
-
