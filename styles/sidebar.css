@@ -48,12 +48,17 @@ body {
     height: auto;
 }
 
-.sidebar-container .menu-container .menu-item.active .item-body {
-    visibility: visible;
+.sidebar-container .menu-container .menu-item.active .item-header h2 {
+    color: #00a9e0;
 }
 
 .sidebar-container .menu-container .menu-item.active .item-header i {
+    color: #00a9e0;
     transform: rotate(180deg);
+}
+
+.sidebar-container .menu-container .menu-item.active .item-body {
+    visibility: visible;
 }
 
 .sidebar-container .menu-container .menu-item .item-header {

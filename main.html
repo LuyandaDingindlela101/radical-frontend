@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="./styles/view-product.css">
         <link rel="stylesheet" href="./styles/add-products-section.css">
         <link rel="stylesheet" href="./styles/edit-products.css">
+        <link rel="stylesheet" href="./styles/profile-section.css">
+        <link rel="stylesheet" href="./styles/view-profile.css">
     </head>
     <body>
         <div class="sidebar-container">
@@ -374,12 +376,55 @@
                         </div>
                         <label for="description">description</label>
                         <textarea name="description"></textarea>
-                        <button type="submit">Add product</button>
+                        <button type="submit">edit product</button>
                     </form>
                 </div>
             </section>
             <section class="profile-section">
-                
+                <section class="view-profile">
+                    <div class="profile-container">
+                        <div class="profile-image">
+                            <img src="./images/header_image.jpg" alt="">
+                        </div>
+                        <div class="profile-description">
+                            <p>First name: <span>Luyanda</span></p>
+                            <p>Last name: <span>Dingindlela</span></p>
+                            <p>Username: <span>notLuyanda</span></p>
+                            <p>Email Address: <span>LuyandaDingindlela@gmail.com</span></p>
+                            <p>Address: <span>23 Tambotie Str. Forest Heights</span></p>
+                        </div>
+                    </div>
+                </section>
+                <section class="edit-profile-secton">
+                    <div class="form-container">
+                        <h2>edit profile information</h2>
+                        <form class="profile-form">
+                            <div class="row">
+                                <div class="column">
+                                    <label for="first_name">first name</label>
+                                    <input type="text" name="first_name">
+                                </div>
+                                <div class="column">
+                                    <label for="last_name">last name</label>
+                                    <input type="text" name="last_name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column">
+                                    <label for="username">username</label>
+                                    <input type="text" name="username">
+                                </div>
+                                <div class="column">
+                                    <label for="password">password</label>
+                                    <input type="text" name="password">
+                                </div>
+                            </div>
+                            <label for="address">address</label>
+                            <textarea name="address"></textarea>
+                            <button type="submit">edit profile</button>
+                        </form>
+                    </div>
+                </section>
             </section>
         </main>
         <script src="./scripts/app.js"></script>
