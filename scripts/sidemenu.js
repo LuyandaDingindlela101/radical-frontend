@@ -9,7 +9,7 @@ let view_profile = document.querySelector(".view-profile-btn");
 let edit_profile = document.querySelector(".edit-profile");
 
 
-
+console.log(edit_profile);
 let sections = document.querySelectorAll("section");
 
 
@@ -45,7 +45,7 @@ view_profile.addEventListener("click", () => {
      document.querySelector(".view-profile").classList.add("active");
 });
 
-edit_add_product_btn.addEventListener("click", () => {
+edit_profile.addEventListener("click", () => {
      sections.forEach(section => section.classList.remove("active"));
 
      document.querySelector(".edit-profile-secton").classList.add("active");
