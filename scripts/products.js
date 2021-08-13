@@ -1,5 +1,24 @@
 let edit_form = document.querySelector(".product-form");
+let add_form = document.querySelector(".product-form");
 
+add_form.addEventListener("submit", e => {
+    //  PREVENT THE DEFAULT ACTION OF THE FORM 
+    e.preventDefault();
+    
+    //  CREATE AN OBJECT CONTAINING ALL THE INPUTS VALUES
+    let new_item = {
+        name: document.querySelector(".edit-name").value,
+        price: document.querySelector(".edit-price").value, 
+        category: document.querySelector(".edit-category").value,
+        review: document.querySelector(".edit-review").value, 
+        description: document.querySelector(".edit-description").value
+    }
+
+    console.log(new_item);
+    
+    //  CALL THE addProduct FUNCTION AND PASS IN THE new_item
+    addProduct(new_item);
+})
 
 //  ON SUBMISSION OF THE edit_form, RUN THE FOLLOWING CODE
 edit_form.addEventListener("submit", e => {
@@ -26,6 +45,7 @@ function getProducts() {
     fetch("https://radical-store.herokuapp.com/show-products/")
     .then(responce => responce.json())
     .then(data => {
+        console.log(data);
         let products = data.products;
         let products_container = document.querySelector(".products-container")
 
@@ -142,6 +162,18 @@ function renderEditForm(product) {
                 </form>
             `
 }
+function addProduct(new_item) {
+    fetch("https://radical-store.herokuapp.com/add-product/", {
+        method: 'POST',
+        //  PASS IN A JSON VERSION OF THE new_item
+        body: JSON.stringify(new_item),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then(responce => responce.json())
+    .then(data => console.log(data))
+}
 
 //  FUNCTION WILL SHOW A PRODUCT BASED ON THE id PROVIDED
 function viewProduct(id) {
@@ -222,4 +254,4 @@ function getProductById(id) {
     return products.filter(product => product.id == id );
 }
 
-getProducts();
+// getProducts();

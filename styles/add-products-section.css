@@ -34,6 +34,7 @@
 }
 
 .add-product-secton .form-container .product-form input,
+.add-product-secton .form-container .product-form select,
 .add-product-secton .form-container .product-form textarea {
     width: 100%;
     padding: 10px;
