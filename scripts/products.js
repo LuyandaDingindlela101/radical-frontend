@@ -1,5 +1,5 @@
-let edit_form = document.querySelector(".product-form");
-let add_form = document.querySelector(".product-form");
+let edit_form = document.querySelector(".edit-product-form");
+let add_form = document.querySelector(".add-product-form");
 
 add_form.addEventListener("submit", e => {
     //  PREVENT THE DEFAULT ACTION OF THE FORM 
@@ -7,11 +7,11 @@ add_form.addEventListener("submit", e => {
     
     //  CREATE AN OBJECT CONTAINING ALL THE INPUTS VALUES
     let new_item = {
-        name: document.querySelector(".edit-name").value,
-        price: document.querySelector(".edit-price").value, 
-        category: document.querySelector(".edit-category").value,
-        review: document.querySelector(".edit-review").value, 
-        description: document.querySelector(".edit-description").value
+        name: document.querySelector(".add-name").value,
+        price: document.querySelector(".add-price").value, 
+        category: document.querySelector(".add-category").value,
+        review: document.querySelector(".add-review").value, 
+        description: document.querySelector(".add-description").value
     }
 
     console.log(new_item);
@@ -27,11 +27,11 @@ edit_form.addEventListener("submit", e => {
     
     //  CREATE AN OBJECT CONTAINING ALL THE INPUTS VALUES
     let updated_item = {
-        name: document.querySelector("edit-name").value,
-        price: document.querySelector("edit-price").value, 
-        category: document.querySelector("edit-category").value,
-        review: document.querySelector("edit-review").value, 
-        description: document.querySelector("edit-description").value
+        name: document.querySelector(".edit-name").value,
+        price: document.querySelector(".edit-price").value, 
+        category: document.querySelector(".edit-category").value,
+        review: document.querySelector(".edit-review").value, 
+        description: document.querySelector(".edit-description").value
     }
 
     console.log(updated_item);
@@ -210,7 +210,7 @@ function getProductToEdit(id) {
 
 //  FUNCTION WILL UPDATE A PRODUCT WITH THE PROVIDED DETAILS USING THE PUT METHOD
 function updateProduct(updated_item) {
-    fetch(`https://radical-store.herokuapp.com/delete-product/${id}`, {
+    fetch(`https://radical-store.herokuapp.com/edit-product/${id}`, {
         method: 'PUT',
         //  PASS IN A JSON VERSION OF THE updated_item
         body: JSON.stringify(updated_item),
@@ -254,4 +254,4 @@ function getProductById(id) {
     return products.filter(product => product.id == id );
 }
 
-// getProducts();
+getProducts();

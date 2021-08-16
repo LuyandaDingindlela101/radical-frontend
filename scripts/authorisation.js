@@ -10,7 +10,9 @@ if (login_form != null) {
             password: document.querySelector("input[name='password']").value
         }
 
-        fetch("https://radical-store.herokuapp.com/auth", {
+        console.log(user_details);
+
+        fetch("https://radical-store.herokuapp.com/user-login/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,14 +20,16 @@ if (login_form != null) {
             body: JSON.stringify(user_details)
         })
         .then(response => response.json())
-        .then(data => { 
-            console.log(data); 
-            
-            if (data["access_token"]) {
-                console.log(data);
-                localStorage.setItem("jwt_token", data["access_token"]);
-              }
-        });
+        .then(data => {
+            console.log(data);
+
+            if(data.status_code == 201) {
+                localStorage.setItem("current_user", JSON.stringify(data.current_user))
+                getToken(user_details);
+
+                window.location.href = "main.html";
+            }
+        })
     })
 }
 
@@ -36,14 +40,14 @@ if (reg_form != null) {
         
         //  CREATE AN OBJECT CONTAINING ALL THE INPUTS VALUES
         let new_user = {
-            first_name: document.querySelector("input[name='first_name']").value,
-            last_name: document.querySelector("input[name='last_name']").value, 
-            username: document.querySelector("input[name='username']").value,
-            email_address: document.querySelector("input[name='email_address']").value,
             address: document.querySelector("input[name='address']").value, 
-            password: document.querySelector("input[name='password']").value
+            password: document.querySelector("input[name='password']").value,
+            username: document.querySelector("input[name='username']").value,
+            last_name: document.querySelector("input[name='last_name']").value, 
+            first_name: document.querySelector("input[name='first_name']").value,
+            email_address: document.querySelector("input[name='email_address']").value
         }
-    
+        
         console.log(new_user);
         
         fetch("https://radical-store.herokuapp.com/user-registration/", {
@@ -61,4 +65,24 @@ if (reg_form != null) {
             localStorage.setItem("current_user", JSON.stringify(current_user))
         });
     })
+}
+
+function getToken(user_details) {
+        fetch("https://radical-store.herokuapp.com/auth", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user_details)
+        })
+        .then(response => response.json())
+        .then(data => { 
+            console.log(data); 
+            
+            if (data["access_token"]) {
+                console.log(data);
+                localStorage.setItem("jwt_token", data["access_token"]);
+
+            }
+        });
 }

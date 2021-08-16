@@ -19,30 +19,30 @@
     text-transform: uppercase;
 }
 
-.edit-product-secton .form-container .product-form .row {
+.edit-product-secton .form-container .edit-product-form .row {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     justify-content: space-between;
 }
 
-.edit-product-secton .form-container .product-form .row .column {
+.edit-product-secton .form-container .edit-product-form .row .column {
     width: 48%;
 }
 
-.edit-product-secton .form-container .product-form label {
+.edit-product-secton .form-container .edit-product-form label {
     text-transform: capitalize;
 }
 
-.edit-product-secton .form-container .product-form input,
-.edit-product-secton .form-container .product-form select,
-.edit-product-secton .form-container .product-form textarea {
+.edit-product-secton .form-container .edit-product-form input,
+.edit-product-secton .form-container .edit-product-form select,
+.edit-product-secton .form-container .edit-product-form textarea {
     width: 100%;
     padding: 10px;
     display: block;
 }
 
-.edit-product-secton .form-container .product-form button {
+.edit-product-secton .form-container .edit-product-form button {
     width: 100%;
     height: 50px;
     border: none;

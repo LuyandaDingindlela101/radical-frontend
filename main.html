@@ -321,21 +321,21 @@
             <section class="add-product-secton">
                 <div class="form-container">
                     <h2>Add new product</h2>
-                    <form class="product-form">
+                    <form class="add-product-form">
                         <div class="row">
                             <div class="column">
                                 <label for="name">name</label>
-                                <input type="text" name="name">
+                                <input type="text" name="name" class="add-name">
                             </div>
                             <div class="column">
                                 <label for="price">price</label>
-                                <input type="text" name="price">
+                                <input type="text" name="price" class="add-price">
                             </div>
                         </div>
                         <div class="row">
                             <div class="column">
                                 <label for="category">category</label>
-                                <select name="category" class="edit-category">
+                                <select name="category" class="add-category">
                                     <option value="VASES">VASES</option>
                                     <option value="LIGHTING">LIGHTING</option>
                                     <option value="HOME DECORE">HOME DECORE</option>
@@ -344,11 +344,11 @@
                             </div>
                             <div class="column">
                                 <label for="reviews">reviews</label>
-                                <input type="text" name="reviews">
+                                <input type="text" name="reviews" class="add-review">
                             </div>
                         </div>
                         <label for="description">description</label>
-                        <textarea name="description"></textarea>
+                        <textarea name="description" class="add-description"></textarea>
                         <button type="submit">Add product</button>
                     </form>
                 </div>
@@ -356,7 +356,7 @@
             <section class="edit-product-secton">
                 <div class="form-container">
                     <h2>edit new product</h2>
-                    <form class="product-form">
+                    <form class="edit-product-form">
                         <div class="row">
                             <div class="column">
                                 <label for="name">name</label>
