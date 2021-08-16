@@ -46,42 +46,58 @@ function getProducts() {
     .then(responce => responce.json())
     .then(data => {
         console.log(data);
-        let products = data.products;
-        let products_container = document.querySelector(".products-container")
 
-        // SAVE INCOMMING products TO LOCALSTORAGE TO MINIMIZE API CALLS
-        localStorage.setItem("products", JSON.stringify(products));
+        if (data.status_code == 201) {
+            let products_list = [];
+            let products = data.products;
+            let products_container = document.querySelector(".products-container");
 
-        //  CLEAR THE CONTENTS OF THE products_container BEFORE POPULATING IT
-        products_container.innerHTML = " ";
+            products.forEach(product => {
+                let product_object = {
+                    id: product[0],
+                    name: product[1],
+                    description: product[2],
+                    price: product[3],
+                    category: product[4],
+                    review: product[5]
+                }
 
-        // LOOP THROUGH THE products AND CREATE A PRODUCT CARD FOR EACH PRODUCT AND WRITE IT TO THE products_container
-        products.forEach(product => {
-            products_container.innerHTML += renderProducts(product);
-        });
+                products_list.push(product_object)
+            })
 
+            // SAVE INCOMMING products TO LOCALSTORAGE TO MINIMIZE API CALLS
+            localStorage.setItem("products", JSON.stringify(products_list));
+    
+            //  CLEAR THE CONTENTS OF THE products_container BEFORE POPULATING IT
+            products_container.innerHTML = " ";
+    
+            // LOOP THROUGH THE products AND CREATE A PRODUCT CARD FOR EACH PRODUCT AND WRITE IT TO THE products_container
+            products.forEach(product => {
+                products_container.innerHTML += renderProducts(product);
+            });
+        }
     });
 }
 
 // FUNCTION WILL RENDER THE PRODUCT CARDS
 function renderProducts(product) {
     return `
-            <div class="product" onclick="viewProduct(${product.id})">
+            <div class="product" onclick="viewProduct(${product[0]})">
                 <div class="buttons-container">
-                    <button class="edit-btn" onclick="getProductToEdit(${product.id})">
+                    <button class="edit-btn" onclick="getProductToEdit(${product[0]})">
                         <i class="fas fa-edit"></i>
                     </button>
-                <button class="delete-btn" onclick="deleteProduct(${product.id})">
+                <button class="delete-btn" onclick="deleteProduct(${product[0]})">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
                 <div class="product-image">
-                    <img src="${product.image}" alt="">
+                    <img src="./images/product_1.jpg" alt="">
                 </div>
                 <div class="product-body">
-                    <h3>${product.name}</h3>
-                    <p>${product.price}</p>
-                    <button class="cart-btn" onclick="addToCart(${product.id})">Add to cart</button>
+                    <h3>${product[1]}</h3>
+                    <p>${product[3]}</p>
+                    <button class="cart-btn" onclick="addToCart(${product[0]})">Add to cart</button>
                 </div>
             </div>
             `
@@ -89,16 +105,18 @@ function renderProducts(product) {
 
 //  FUNCTION WILL RENDER A SINGE PRODUCT
 function renderProduct(product) {
+    console.log(product);
+    console.log(product[0]);
     return `
                 <div class="product-container">
                     <div class="product-image">
-                        <img src="${product.image}" alt="">
+                        <img src="./images/product_1.jpg" alt="">
                     </div>
                     <div class="product-description">
-                        <h2>${product.name}</h2>
-                        <h3>${product.price}</h3>
+                        <h2>${product[1]}</h2>
+                        <h3>${product[3]}</h3>
                         <p>
-                            ${product.description}
+                            ${product[2]}
                         </p>
                         <div class="quantity-container">
                             <form class="quantity-form">
@@ -108,7 +126,7 @@ function renderProduct(product) {
                         </div>
                         <h4>Reviews</h4>
                         <p>
-                            ${product.review}
+                            ${product[5]}
                         </p>
                     </div>
                 </div>
@@ -120,7 +138,7 @@ function renderProduct(product) {
                     <div class="tab-info">
                         <h4>Description</h4>
                         <p>
-                            ${product.description}
+                            ${product[2]}
                         </p>
                     </div>
                 </div>
@@ -134,11 +152,11 @@ function renderEditForm(product) {
                     <div class="row">
                         <div class="column">
                             <label for="name">name</label>
-                            <input type="text" name="name" value="${product.name}">
+                            <input type="text" name="name" value="${product[1]}">
                         </div>
                         <div class="column">
                             <label for="price">price</label>
-                            <input type="text" name="price" value="${product.price}">
+                            <input type="text" name="price" value="${product[3]}">
                         </div>
                     </div>
                     <div class="row">
@@ -153,11 +171,11 @@ function renderEditForm(product) {
                         </div>
                         <div class="column">
                             <label for="reviews">reviews</label>
-                            <input type="text" name="reviews" value="${product.review}">
+                            <input type="text" name="reviews" value="${product[5]}">
                         </div>
                     </div>
                     <label for="description">description</label>
-                    <textarea name="description" value="${product.description}"></textarea>
+                    <textarea name="description" value="${product[2]}"></textarea>
                     <button type="submit">edit product</button>
                 </form>
             `
@@ -177,6 +195,7 @@ function addProduct(new_item) {
 
 //  FUNCTION WILL SHOW A PRODUCT BASED ON THE id PROVIDED
 function viewProduct(id) {
+    console.log(id);
     //  GET THE PRODUCT WITH A MATCHING id AS THE ONE PROVIDED
     let product = getProductById(id);
     let product_container = document.querySelector(".view-product-section");
@@ -245,13 +264,11 @@ function addToCart(id) {
         product: product,
         user: current_user
     }
-
-    
 }
 
 function getProductById(id) {
     let products = JSON.parse(localStorage.getItem("products"));
-    return products.filter(product => product.id == id );
+    return products.filter(product => product[0] == id );
 }
 
 getProducts();
