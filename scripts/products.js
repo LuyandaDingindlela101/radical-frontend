@@ -73,7 +73,6 @@ function getProducts() {
     
             // LOOP THROUGH THE products AND CREATE A PRODUCT CARD FOR EACH PRODUCT AND WRITE IT TO THE products_container
             products_list.forEach(product => {
-                console.log(product);
                 products_container.innerHTML += renderProducts(product);
             });
         } 
@@ -82,7 +81,6 @@ function getProducts() {
 
 // FUNCTION WILL RENDER THE PRODUCT CARDS
 function renderProducts(product) {
-    console.log(product);
     return `
             <div class="product">
                 <div class="buttons-container">
@@ -255,15 +253,12 @@ function deleteProduct(id) {
 
 function addToCart(id) {
     let product = getProductById(id);
-    let cart_items = JSON.parse("cart");
-    let current_user = JSON.parse("current user");
+    let cart_items = JSON.parse(localStorage.getItem("cart"));
 
     if (cart_items == null) { cart_items = [] }
-
-    let new_item = {
-        product: product,
-        user: current_user
-    }
+    
+    cart_items.push(product)
+    localStorage.setItem("cart", JSON.stringify(cart_items));
 }
 
 function getProductById(id) {
