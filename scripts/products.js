@@ -72,32 +72,34 @@ function getProducts() {
             products_container.innerHTML = " ";
     
             // LOOP THROUGH THE products AND CREATE A PRODUCT CARD FOR EACH PRODUCT AND WRITE IT TO THE products_container
-            products.forEach(product => {
+            products_list.forEach(product => {
+                console.log(product);
                 products_container.innerHTML += renderProducts(product);
             });
-        }
+        } 
     });
 }
 
 // FUNCTION WILL RENDER THE PRODUCT CARDS
 function renderProducts(product) {
+    console.log(product);
     return `
-            <div class="product" onclick="viewProduct(${product[0]})">
+            <div class="product">
                 <div class="buttons-container">
-                    <button class="edit-btn" onclick="getProductToEdit(${product[0]})">
+                    <button class="edit-btn" onclick="getProductToEdit(${product.id})">
                         <i class="fas fa-edit"></i>
                     </button>
-                <button class="delete-btn" onclick="deleteProduct(${product[0]})">
+                <button class="delete-btn" onclick="deleteProduct(${product.id})">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
-                <div class="product-image">
+                <div class="product-image" onclick="viewProduct(${product.id})">
                     <img src="./images/product_1.jpg" alt="">
                 </div>
                 <div class="product-body">
-                    <h3>${product[1]}</h3>
-                    <p>${product[3]}</p>
-                    <button class="cart-btn" onclick="addToCart(${product[0]})">Add to cart</button>
+                    <h3>${product.name}</h3>
+                    <p>${product.price}</p>
+                    <button class="cart-btn" onclick="addToCart(${product.id})">Add to cart</button>
                 </div>
             </div>
             `
@@ -105,7 +107,6 @@ function renderProducts(product) {
 
 //  FUNCTION WILL RENDER A SINGE PRODUCT
 function renderProduct(product) {
-    console.log(product);
     console.log(product[0]);
     return `
                 <div class="product-container">
@@ -113,10 +114,10 @@ function renderProduct(product) {
                         <img src="./images/product_1.jpg" alt="">
                     </div>
                     <div class="product-description">
-                        <h2>${product[1]}</h2>
-                        <h3>${product[3]}</h3>
+                        <h2>${product[0].name}</h2>
+                        <h3>${product[0].price}</h3>
                         <p>
-                            ${product[2]}
+                            ${product[0].description}
                         </p>
                         <div class="quantity-container">
                             <form class="quantity-form">
@@ -126,7 +127,7 @@ function renderProduct(product) {
                         </div>
                         <h4>Reviews</h4>
                         <p>
-                            ${product[5]}
+                            ${product[0].review}
                         </p>
                     </div>
                 </div>
@@ -138,7 +139,7 @@ function renderProduct(product) {
                     <div class="tab-info">
                         <h4>Description</h4>
                         <p>
-                            ${product[2]}
+                            ${product[0].description}
                         </p>
                     </div>
                 </div>
@@ -152,11 +153,11 @@ function renderEditForm(product) {
                     <div class="row">
                         <div class="column">
                             <label for="name">name</label>
-                            <input type="text" name="name" value="${product[1]}">
+                            <input type="text" name="name" value="${product.name}">
                         </div>
                         <div class="column">
                             <label for="price">price</label>
-                            <input type="text" name="price" value="${product[3]}">
+                            <input type="text" name="price" value="${product.price}">
                         </div>
                     </div>
                     <div class="row">
@@ -171,11 +172,11 @@ function renderEditForm(product) {
                         </div>
                         <div class="column">
                             <label for="reviews">reviews</label>
-                            <input type="text" name="reviews" value="${product[5]}">
+                            <input type="text" name="reviews" value="${product.review}">
                         </div>
                     </div>
                     <label for="description">description</label>
-                    <textarea name="description" value="${product[2]}"></textarea>
+                    <textarea name="description" value="${product.description}"></textarea>
                     <button type="submit">edit product</button>
                 </form>
             `
@@ -191,6 +192,8 @@ function addProduct(new_item) {
     })
     .then(responce => responce.json())
     .then(data => console.log(data))
+
+    getProducts();
 }
 
 //  FUNCTION WILL SHOW A PRODUCT BASED ON THE id PROVIDED
@@ -237,20 +240,17 @@ function updateProduct(updated_item) {
             'Content-type': 'application/json; charset=UTF-8',
         },
     })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then(response => response.json())
+    .then(data => console.log(data));
 }
 
 //  FUNCTION WILL DELETE A PRODUCT WITH THE PROVIDED id
 function deleteProduct(id) {
-    fetch(`https://radical-store.herokuapp.com/delete-product/${id}`, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    fetch(`https://radical-store.herokuapp.com/delete-product/${id}`)
+    .then(response => response.json())
+    .then(data => console.log(data));
+
+    renderProducts();
 }
 
 function addToCart(id) {
@@ -268,7 +268,7 @@ function addToCart(id) {
 
 function getProductById(id) {
     let products = JSON.parse(localStorage.getItem("products"));
-    return products.filter(product => product[0] == id );
+    return products.filter(product => product.id == id );
 }
 
 getProducts();
