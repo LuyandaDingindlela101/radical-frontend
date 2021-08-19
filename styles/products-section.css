@@ -35,16 +35,25 @@
     border: 1px solid #080808;
 }
 
+.products-section .products-header .products-filter .filter.active {
+    color: #ffffff;
+    background: #080808;
+}
+
+
 /* PRODUCT CONTAINER */
-.products-section .products-container .row {
+.products-section .products-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 50px;
     justify-content: space-between;
 }
 
 .products-section .products-container .product {
-    width: 24%;
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
     position: relative;
 }
 

@@ -1,5 +1,16 @@
-let edit_form = document.querySelector(".edit-product-form");
+let filter_options = document.querySelectorAll(".filter");
 let add_form = document.querySelector(".add-product-form");
+let edit_form = document.querySelector(".edit-product-form");
+
+let all_filter = document.querySelector(".all");
+let vases_filter = document.querySelector(".vases");
+let lighting_filter = document.querySelector(".lighting");
+let decoration_filter = document.querySelector(".decoration");
+
+all_filter.addEventListener("click", () => filterProducts("all"));
+vases_filter.addEventListener("click", () => filterProducts("vases"));
+lighting_filter.addEventListener("click", () => filterProducts("lighting"));
+decoration_filter.addEventListener("click", () => filterProducts("decoration"));
 
 add_form.addEventListener("submit", e => {
     //  PREVENT THE DEFAULT ACTION OF THE FORM 
@@ -190,9 +201,12 @@ function addProduct(new_item) {
         },
     })
     .then(responce => responce.json())
-    .then(data => console.log(data))
+    .then(data => {
+        console.log(data)
+        
+        getProducts();
+    })
 
-    getProducts();
 }
 
 //  FUNCTION WILL SHOW A PRODUCT BASED ON THE id PROVIDED
@@ -260,11 +274,44 @@ function addToCart(id) {
     
     cart_items.push(product)
     localStorage.setItem("cart", JSON.stringify(cart_items));
+
+    getTotal()
 }
 
 function getProductById(id) {
     let products = JSON.parse(localStorage.getItem("products"));
     return products.filter(product => product.id == id );
 }
+
+function getTotal() {
+    let total = 0
+    let cart = JSON.parse(localStorage.getItem("cart"))
+
+    cart.forEach(item => total += parseInt(item[0].price))
+
+    document.querySelector(".total").innerHTML = `(R${total})`
+}
+
+function filterProducts(category) {
+    let products = JSON.parse(localStorage.getItem("products"));
+    let filtered_products = products.filter(product => product.category == category.toUpperCase());
+    let products_container = document.querySelector(".products-container");
+    
+    console.log(category);
+    filter_options.forEach(filter => filter.classList.remove("active"));
+    filter_options.forEach(filter => {
+        if (filter.classList.contains(category)) { filter.classList.add("active"); }
+    })
+
+    //  CLEAR THE CONTENTS OF THE products_container BEFORE POPULATING IT
+    products_container.innerHTML = " ";
+
+    // LOOP THROUGH THE products AND CREATE A PRODUCT CARD FOR EACH PRODUCT AND WRITE IT TO THE products_container
+    filtered_products.forEach(product => {
+        products_container.innerHTML += renderProducts(product);
+    });
+}
+
+
 
 getProducts();
