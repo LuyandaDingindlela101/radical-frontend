@@ -17,7 +17,6 @@ function getCart() {
 }
 
 function removeFromCart(id) {
-    let item = getCartById(id)[0][0];
     let cart = JSON.parse(localStorage.getItem("cart"))
     let updated_cart = cart.filter(item => item[0].id != id);
 
@@ -54,6 +53,5 @@ function getTotal() {
 function clearCart() {
     localStorage.removeItem("cart");
 }
-
 
 getCart()

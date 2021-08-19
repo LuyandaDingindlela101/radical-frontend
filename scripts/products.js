@@ -179,6 +179,7 @@ function renderEditForm(product) {
                 </form>
             `
 }
+
 function addProduct(new_item) {
     fetch("https://radical-store.herokuapp.com/add-product/", {
         method: 'POST',
