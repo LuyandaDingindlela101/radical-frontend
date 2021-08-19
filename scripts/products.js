@@ -7,6 +7,7 @@ let vases_filter = document.querySelector(".vases");
 let lighting_filter = document.querySelector(".lighting");
 let decoration_filter = document.querySelector(".decoration");
 
+
 all_filter.addEventListener("click", () => filterProducts("all"));
 vases_filter.addEventListener("click", () => filterProducts("vases"));
 lighting_filter.addEventListener("click", () => filterProducts("lighting"));
@@ -24,8 +25,6 @@ add_form.addEventListener("submit", e => {
         review: document.querySelector(".add-review").value, 
         description: document.querySelector(".add-description").value
     }
-
-    console.log(new_item);
     
     //  CALL THE addProduct FUNCTION AND PASS IN THE new_item
     addProduct(new_item);
@@ -44,8 +43,6 @@ edit_form.addEventListener("submit", e => {
         review: document.querySelector(".edit-review").value, 
         description: document.querySelector(".edit-description").value
     }
-
-    console.log(updated_item);
     
     //  CALL THE updateProduct FUNCTION AND PASS IN THE updated_item
     updateProduct(updated_item);
@@ -56,7 +53,6 @@ function getProducts() {
     fetch("https://radical-store.herokuapp.com/show-products/")
     .then(responce => responce.json())
     .then(data => {
-        console.log(data);
 
         if (data.status_code == 201) {
             let products_list = [];
@@ -116,7 +112,6 @@ function renderProducts(product) {
 
 //  FUNCTION WILL RENDER A SINGE PRODUCT
 function renderProduct(product) {
-    console.log(product[0]);
     return `
                 <div class="product-container">
                     <div class="product-image">
@@ -202,8 +197,7 @@ function addProduct(new_item) {
     })
     .then(responce => responce.json())
     .then(data => {
-        console.log(data)
-        
+        console.log(data);        
         getProducts();
     })
 
@@ -211,7 +205,6 @@ function addProduct(new_item) {
 
 //  FUNCTION WILL SHOW A PRODUCT BASED ON THE id PROVIDED
 function viewProduct(id) {
-    console.log(id);
     //  GET THE PRODUCT WITH A MATCHING id AS THE ONE PROVIDED
     let product = getProductById(id);
     let product_container = document.querySelector(".view-product-section");
@@ -254,16 +247,17 @@ function updateProduct(updated_item) {
         },
     })
     .then(response => response.json())
-    .then(data => console.log(data));
 }
 
 //  FUNCTION WILL DELETE A PRODUCT WITH THE PROVIDED id
 function deleteProduct(id) {
     fetch(`https://radical-store.herokuapp.com/delete-product/${id}`)
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+        console.log(data);
+        renderProducts();
+    })
 
-    renderProducts();
 }
 
 function addToCart(id) {
@@ -288,7 +282,6 @@ function getTotal() {
     let cart = JSON.parse(localStorage.getItem("cart"))
 
     cart.forEach(item => total += parseInt(item[0].price))
-
     document.querySelector(".total").innerHTML = `(R${total})`
 }
 
@@ -297,7 +290,6 @@ function filterProducts(category) {
     let filtered_products = products.filter(product => product.category == category.toUpperCase());
     let products_container = document.querySelector(".products-container");
     
-    console.log(category);
     filter_options.forEach(filter => filter.classList.remove("active"));
     filter_options.forEach(filter => {
         if (filter.classList.contains(category)) { filter.classList.add("active"); }
@@ -315,3 +307,4 @@ function filterProducts(category) {
 
 
 getProducts();
+getTotal();

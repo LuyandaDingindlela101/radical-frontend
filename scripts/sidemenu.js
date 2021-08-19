@@ -4,7 +4,7 @@ let sections = document.querySelectorAll("section");
 let edit_profile = document.querySelector(".edit-profile");
 let view_profile = document.querySelector(".view-profile-btn");
 
-let faqList = document.querySelectorAll(".menu-item");
+let menu_list = document.querySelectorAll(".menu-item");
 let view_all_products = document.querySelector(".view-all-product");
 let open_add_product_btn = document.querySelector(".open-add-product");
 let edit_add_product_btn = document.querySelector(".edit-add-product");
@@ -14,8 +14,8 @@ let edit_add_product_btn = document.querySelector(".edit-add-product");
 
 
 // EVENT LISTENERS
-faqList.forEach(faq => {
-	faq.addEventListener("click", addMenuItem);
+menu_list.forEach(item => {
+	item.addEventListener("click", addMenuItem);
 });
 
 view_all_products.addEventListener("click", () => {
@@ -50,8 +50,8 @@ edit_profile.addEventListener("click", () => {
 
 // FUNCTION DECLARATIONS
 function addMenuItem(e) {
-     // FIRST WE LOOP THROUGH faqList AND IF THERE IS A faq THAT IS EXPANDED, COLLAPSE IT.
-     faqList.forEach(faq => {
+     // FIRST WE LOOP THROUGH menu_list AND IF THERE IS A faq THAT IS EXPANDED, COLLAPSE IT.
+     menu_list.forEach(faq => {
           // IF THE faq HAS A CLASS OF active, REMOVE IT
           if(faq.classList.contains("active")) faq.classList.remove("active");
      });

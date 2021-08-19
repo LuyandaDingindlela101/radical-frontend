@@ -1,7 +1,7 @@
 let total_btn = document.querySelector(".total-btn")
 let clear_btn = document.querySelector(".clear-btn")
 
-total_btn.addEventListener("click", getTotal);
+// total_btn.addEventListener("click", getTotal);1
 clear_btn.addEventListener("click", clearCart);
 
 
@@ -28,10 +28,15 @@ function removeFromCart(id) {
 function renderCart(product) {
     return `
             <div class="item" >
-                <h2>${product.name}</h2>
-                <h3>${product.description}</h3>
-                <p>${product.price}</p>
-                <button onclick="removeFromCart(${product.id})">Remove item</button>
+                <div class="image-container">
+                    <img src="./images/product_1.jpg" alt="">
+                </div>
+                <div class="product-details">
+                    <h2>${product.name}</h2>
+                    <h3>${product.description}</h3>
+                    <p>${product.price}</p>
+                    <button onclick="removeFromCart(${product.id})">Remove item</button>
+                </div>
             </div>
             `
 }
@@ -47,11 +52,12 @@ function getTotal() {
 
     cart.forEach(item => total += parseInt(item[0].price))
 
-    document.querySelector(".total").innerHTML = `the total is: R${total}`
+    document.querySelector(".total").innerHTML = `(R${total})`
 }
 
 function clearCart() {
     localStorage.removeItem("cart");
 }
 
-getCart()
+getCart();
+getTotal();

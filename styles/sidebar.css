@@ -94,6 +94,11 @@ body {
     padding: 20px;
 }
 
+.sidebar-container .menu-container .menu-item .item-body ul li a {
+    text-decoration: none;
+    color: hsl(237, 12%, 33%);
+}
+
 .sidebar-container .menu-container .menu-item .item-body ul li:hover {
     background: #fafafa;
 }
