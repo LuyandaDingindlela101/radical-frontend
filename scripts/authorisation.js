@@ -64,7 +64,7 @@ if (reg_form != null) {
         .then(data => { 
             console.log(data); 
             
-            let current_user = res.current_user;
+            let current_user = data.current_user;
             localStorage.setItem("current_user", JSON.stringify(current_user))
         });
     })
@@ -85,7 +85,6 @@ function getToken(user_details) {
             if (data["access_token"]) {
                 console.log(data);
                 localStorage.setItem("jwt_token", data["access_token"]);
-
             }
         });
 }
